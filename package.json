@@ -1,0 +1,15 @@
+{
+  "name": "survey-api",
+  "version": "1.0.0",
+  "description": "问卷api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "cty",
+  "license": "ISC",
+  "dependencies": {
+    "koa2": "^2.0.0-alpha.7"
+  }
+}
