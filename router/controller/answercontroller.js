@@ -28,7 +28,6 @@ class AnswerController {
     }
     ctx.body = result
     console.log('data====>', data)
-
   }
 }
 module.exports = new AnswerController()

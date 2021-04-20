@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const surveyModel = require('../schema/surveySchema')
 const ObjectId = require('mongoose').Types.ObjectId
+const JwtUtil = require('../../utils/check')
 class SurveyController {
   /**
     创建问卷
@@ -16,7 +17,8 @@ class SurveyController {
   /**
     获取问卷列表
    */
-  async getSurveyList(ctx) {
+  async getSurveyList(ctx, next) {
+    const token = ctx.request.headers.token
     const query = ctx.query
     const inputExp = new RegExp(query.input)
     try {
@@ -34,6 +36,27 @@ class SurveyController {
         message: err.message
       }
     }
+    // if (token !== 'null') {
+    //   let jwt = new JwtUtil({ token })
+    //   let result = jwt.verifyToken()
+    //   console.log('resulr', result)
+    //   if (result != 200) {
+    //     ctx.body = result
+    //     return
+    //   }
+
+    // } else {
+    //   if (noTokenUrl.includes(ctx.request.url)) {//是否在不需要token验证的路由下
+    //     next()
+    //   } else {//不在接受的路由当中，且未携带token
+    //     ctx.response.status = 401
+    //     ctx.body = {
+    //       code: 401,
+    //       message: '无效token'
+    //     }
+    //   }
+    // }
+
 
   }
   /**
